@@ -19,3 +19,17 @@ class CreateDisposalPoints < ActiveRecord::Migration[5.1]
     end
   end
 end
+
+#0 Nombre Punto de Recolección      disposal_point_name
+#1 Dirección punto de recolección,  disposal_point_address
+#2 Ciudad,                          city
+#3 Departamento,                    department
+#4 País,                            country
+#5 Categoria residuo,               residue_category
+#6 Tipo Residuo,                    residue_type
+#7 Nombre residuo,                  residue_name
+#8 Ubicacion,                       location
+#9 Horario,                         schedule
+#A Nombre Programa Posconsumo,      postconsumption_program_name
+#B Persona Contacto,                contact_person
+#C Correo electrónico               email
