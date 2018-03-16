@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  disposal_point_name: MyString
+  disposal_point_address: MyString
+  city: MyString
+  department: MyString
+  country: MyString
+  residue_category: MyString
+  residue_type: MyString
+  residue_name: MyString
+  location: MyString
+  schedule: MyString
+  postconsumption_program_name: MyString
+  contact_person: MyString
+  email: MyString
+
+two:
+  disposal_point_name: MyString
+  disposal_point_address: MyString
+  city: MyString
+  department: MyString
+  country: MyString
+  residue_category: MyString
+  residue_type: MyString
+  residue_name: MyString
+  location: MyString
+  schedule: MyString
+  postconsumption_program_name: MyString
+  contact_person: MyString
+  email: MyString

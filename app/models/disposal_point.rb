@@ -1,0 +1,2 @@
+class DisposalPoint < ApplicationRecord
+end
