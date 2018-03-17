@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'csv'
+puts 'Listado_de_puntos_de_recolecci_n_de_residuos_posconsumo.csv'
 csv_text = File.read(Rails.root.join('lib', 'seeds', 'Listado_de_puntos_de_recolecci_n_de_residuos_posconsumo.csv'))
 csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
 i = 0
@@ -43,5 +44,3 @@ end
 #A Nombre Programa Posconsumo,      postconsumption_program_name
 #B Persona Contacto,                contact_person
 #C Correo electrónico               email
-
-puts csv_text
