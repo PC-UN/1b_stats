@@ -1,0 +1,463 @@
+#Test with: http://editor.swagger.io/
+
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Microservice for stats about disposal points
+  description: Ruby + MySQL
+  license:
+    name: Software Architecture 2018-I
+host: 192.168.99.102:4006
+basePath: /
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /count_per_city:
+    get: 
+      summary: Returns the number of disposal points per city in Colombia
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+            
+  /count_per_city_sorted:
+    get: 
+      summary: Returns the number of disposal points per city in Colombia sorted
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+            
+            
+  /person_per_disposal:
+    get: 
+      summary: Returns the number of people per disposal points in Colombia
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'   
+            
+  /person_per_disposal_sorted:
+    get: 
+      summary: Returns the number of people per disposal points in Colombia sorted
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'    
+            
+  /count_per_department:
+    get: 
+      summary: Returns the number of disposal points per department in Colombia
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+            
+  /count_per_department_sorted:
+    get: 
+      summary: Returns the number of disposal points per department in Colombia sorted
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+            
+  /count_per_residue_name:
+    get: 
+      summary: Returns the number of disposal points per residue name in Colombia
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+            
+  /count_per_residue_name_sorted:
+    get: 
+      summary: Returns the number of disposal points per residue name in Colombia sorted
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'            
+            
+  /count_per_residue_type:
+    get: 
+      summary: Returns the number of disposal points per residue type in Colombia
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+            
+  /count_per_residue_type_sorted:
+    get: 
+      summary: Returns the number of disposal points per residue type in Colombia sorted
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+            
+  /count_per_program_name:
+    get: 
+      summary: Returns the number of disposal points per program name type in Colombia
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+  
+  /count_per_program_name_sorted:
+    get:
+      summary: Returns the number of disposal points per program name type in Colombia sorted
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/CountStats'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'    
+            
+            
+
+        
+  /disposal_points:
+    post:
+      summary: Creates a new disposal point
+      operationId: createDisposalPoint
+      parameters:
+        - name: disposal_point
+          in: body
+          required: true
+          description: Disposal Point Object
+          schema:
+            $ref: '#/definitions/DisposalPointInput'
+      responses:
+        '201':
+          description: Created
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+    get:
+      summary: Returns all disposal points
+      operationId: getAllDisposalPoints
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/DisposalPointList'
+        '406':
+          description: Not Acceptable (Invalid Params)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+  /disposal_points/{id}:
+    get:
+      summary: Returns a disposal point with the given id
+      operationId: getDisposalPointById
+      parameters:
+        - name: id
+          in: path
+          description: The id of the disposal point to be returned
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+          schema:
+            $ref: '#/definitions/DisposalPoint'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+    put:
+      summary: Updates a disposal point with the given id
+      operationId: updateDisposalPoint
+      parameters:
+        - name: id
+          in: path
+          description: The id of the disposal point to be updated
+          required: true
+          type: integer
+        - name: disposal_point
+          in: body
+          required: true
+          description: Disposal Point Object
+          schema:
+            $ref: '#/definitions/DisposalPointInput'
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+    delete:
+      summary: Deletes a disposal point with the given id
+      operationId: deleteDisposalPoint
+      parameters:
+        - name: id
+          in: path
+          description: The id of the disposal point to be deleted
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Ok
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '406':
+            description: Not Acceptable (Invalid Params)
+            schema:
+              $ref: '#/definitions/ErrorModel'
+        '500':
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+
+definitions:
+
+  # DisposalPoint
+  DisposalPoint:
+    type: object
+    properties:
+      id:
+        type: integer
+      disposal_point_name:
+        type: string
+      disposal_point_address:
+        type: string
+      city:
+        type: string
+      department:
+        type: string
+      country:
+        type: string
+      residue_category:
+        type: string
+      residue_type:
+        type: string
+      residue_name:
+        type: string
+      location:
+        type: string
+      schedule:
+        type: string
+      postconsumption_program_name:
+        type: string
+      contact_person:
+        type: string
+      email:
+        type: string
+
+  DisposalPointInput:
+    type: object
+    properties:
+      disposal_point_name:
+        type: string
+      disposal_point_address:
+        type: string
+      city:
+        type: string
+      department:
+        type: string
+      country:
+        type: string
+      residue_category:
+        type: string
+      residue_type:
+        type: string
+      residue_name:
+        type: string
+      location:
+        type: string
+      schedule:
+        type: string
+      postconsumption_program_name:
+        type: string
+      contact_person:
+        type: string
+      email:
+        type: string
+
+  DisposalPointList:
+    type: object
+    required:
+      - total
+      - list
+    properties:
+      total:
+        type: number
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/DisposalPoint'
+          
+  CountStats:
+    type: object
+    required:
+      - total
+      - list
+    properties:
+      total:
+        type: number
+      list:
+        type: array
+        items:
+          $ref: '#/definitions/Count'
+          
+  Count:
+    type: object
+    properties:
+      item:
+        type: string
+      quantity:
+        type: number
+    
+    
+
+# Errors
+  ErrorModel:
+    type: object
+    required:
+      - message
+      - code
+    properties:
+      message:
+        type: string
+      code:
+        type: number
+      description:
+        type: object 
