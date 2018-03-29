@@ -7,74 +7,106 @@ class StatsHandlerController < ApplicationController
   
   # GET
   def disposal_count_per_city
-      @count = DisposalPoint.count_by("city")
-      render json: @count
+      data = DisposalPoint.count_by("city")
+      @ans = to_list_of_hash(data)
+      render json: @ans
   end
   
   def disposal_count_per_city_sorted
-      @count = DisposalPoint.count_by("city").invert.sort.reverse.to_h.invert
-      render json: @count    
+      data = DisposalPoint.count_by("city")
+      @ans = to_list_of_hash_sorted(data)
+      render json: @ans
   end
 
   # GET
   def disposal_count_per_department
-      @count = DisposalPoint.count_by("department")
-      render json: @count
+      data = DisposalPoint.count_by("department")
+      @ans = to_list_of_hash(data)
+      render json: @ans
   end
   
   # GET
   def disposal_count_per_department_sorted
-      @count = DisposalPoint.count_by("department").invert.sort.reverse.to_h.invert
-      render json: @count
+      data = DisposalPoint.count_by("department")
+      @ans = to_list_of_hash_sorted(data)
+      render json: @ans
   end
 
   # GET
   def disposal_count_per_residue_name
-      @count = DisposalPoint.count_by("residue_name")
-      render json: @count
-
+      data = DisposalPoint.count_by("residue_name")
+      @ans = to_list_of_hash(data)
+      render json: @ans
   end
   
   # GET
   def disposal_count_per_residue_name_sorted
-      @count = DisposalPoint.count_by("residue_name").invert.sort.reverse.to_h.invert
-      render json: @count
+      data = DisposalPoint.count_by("residue_name")
+      @ans = to_list_of_hash_sorted(data)
+      render json: @ans
   end
 
   # GET
   def disposal_count_per_residue_type
-      @count = DisposalPoint.count_by("residue_type")
-      render json: @count
+      data = DisposalPoint.count_by("residue_type")
+      @ans = to_list_of_hash(data)
+      render json: @ans
   end
   
   # GET
   def disposal_count_per_residue_type_sorted
-      @count = DisposalPoint.count_by("residue_type").invert.sort.reverse.to_h.invert
-      render json: @count
+      data = DisposalPoint.count_by("residue_type")
+      @ans = to_list_of_hash_sorted(data)      
+      render json: @ans
   end
 
   # GET
   def disposal_count_per_program_name
-      @count = DisposalPoint.count_by("postconsumption_program_name")
-      render json: @count
+      data = DisposalPoint.count_by("postconsumption_program_name")
+      @ans = to_list_of_hash(data)      
+      render json: @ans
   end
   
   # GET
   def disposal_count_per_program_name_sorted
-      @count = DisposalPoint.count_by("postconsumption_program_name").invert.sort.reverse.to_h.invert
-      render json: @count
+      data = DisposalPoint.count_by("postconsumption_program_name").invert.sort.reverse.to_h.invert
+      @ans = to_list_of_hash_sorted(data)
+      render json: @ans
   end
   
   # GET
-  def person_per_disposal
-      @ratios = DisposalPoint.person_disposal_ratio()
-      render json: @ratios
+  def people_per_disposal
+      data = DisposalPoint.person_disposal_ratio()
+      @ans = to_list_of_hash(data)
+      render json: @ans
   end
   
   # GET
-  def person_per_disposal_sorted
-      @ratios = DisposalPoint.person_disposal_ratio()
-      @sorted_ratios = @ratios.invert.sort.reverse.to_h.invert
-      render json: @sorted_ratios
+  def people_per_disposal_sorted
+      data = DisposalPoint.person_disposal_ratio()
+      @ans = to_list_of_hash_sorted(data)
+      render json: @ans
+  end
+  
+  def to_list_of_hash(data) # data is a hash of hashes
+      ans = []
+      data.to_a.each do |entry|
+        ans.push({item: entry[0], quantity: entry[1]})
+      end
+      return ans
+  end
+  
+  def to_list_of_hash_sorted(data) # data is a hash of hashes
+      ans = []
+      temparr = []
+      data.to_a.each do |entry|
+        temparr.push([entry[1], entry[0]])
+      end
+      sortarr = temparr.sort
+      print sortarr
+      sortarr.each do |entry|
+        ans.push({item: entry[1], quantity: entry[0]})
+      end
+      return ans
   end
 end

@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   get 'count_per_program_name', to: 'stats_handler#disposal_count_per_program_name', as: 'disposal_count_per_program_name'
   get 'count_per_program_name_sorted', to: 'stats_handler#disposal_count_per_program_name_sorted'
   
-  get 'person_per_disposal', to: 'stats_handler#person_per_disposal', as: 'person_per_disposal'
-  get 'person_per_disposal_sorted', to: 'stats_handler#person_per_disposal_sorted', as: 'person_per_disposal_sorted'
+  get 'people_per_disposal', to: 'stats_handler#people_per_disposal', as: 'people_per_disposal'
+  get 'people_per_disposal_sorted', to: 'stats_handler#people_per_disposal_sorted', as: 'people_per_disposal_sorted'
 
   resources :disposal_points
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
