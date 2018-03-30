@@ -1,4 +1,4 @@
 applications:
     - name: stats-ms
       random-route: true
-      memory: 512M
+      memory: 128M
