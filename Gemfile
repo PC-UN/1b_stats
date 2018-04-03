@@ -10,7 +10,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.5'
-# Use db2 IBM as the database for Active Record
+# Use PostGres as the database for Active Record
 gem 'db2', '~> 2.7'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
