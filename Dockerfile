@@ -8,3 +8,5 @@ ADD Gemfile.lock /stats-ms/Gemfile.lock
 
 RUN bundle install
 ADD . /stats-ms
+
+EXPOSE 3305
